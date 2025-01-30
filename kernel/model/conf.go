@@ -105,11 +105,13 @@ func (conf *AppConf) SetUILayout(uiLayout *conf.UILayout) {
 func (conf *AppConf) GetUser() *conf.User {
 	conf.m.Lock()
 	defer conf.m.Unlock()
-	conf.User.UserSiYuanOneTimePayStatus = 1
-	conf.User.UserSiYuanProExpireTime = -1
-	conf.User.UserSiYuanSubscriptionPlan = 0
-	conf.User.UserSiYuanSubscriptionType = 1
-	conf.User.UserSiYuanSubscriptionStatus = 0
+	if conf.User != nil {
+		conf.User.UserSiYuanOneTimePayStatus = 1
+		conf.User.UserSiYuanProExpireTime = -1
+		conf.User.UserSiYuanSubscriptionPlan = 0
+		conf.User.UserSiYuanSubscriptionType = 1
+		conf.User.UserSiYuanSubscriptionStatus = 0
+	}
 	return conf.User
 }
 
